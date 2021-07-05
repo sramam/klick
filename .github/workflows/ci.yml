@@ -25,8 +25,8 @@ jobs:
       - name: Run tests
         run: deno test --coverage=./coverage --allow-all --unstable
 
-      - name: Transform coverage to c8 compatible format
-        run: deno run --allow-read --allow-write --unstable cli.ts convert coverage/deno coverage/tmp
-      
-      - name: Generate a C8 report
-        run: npx c8 report -r html
+      - name: Run tests
+        run: deno test --coverage=./coverage --allow-all --unstable --update
+
+      - name: Run tests
+        run: deno test --coverage=./coverage --allow-all --unstable --refresh
