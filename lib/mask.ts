@@ -6,7 +6,7 @@ export default function mask(anyType: unknown, masks: string[]): unknown {
   const _mask = (
     currType: unknown,
     _masks: string[],
-    dotPath = ``
+    dotPath = ``,
   ): unknown => {
     const shouldMask = micromatch.isMatch(dotPath, _masks);
     matches += shouldMask ? 1 : 0;
@@ -16,16 +16,14 @@ export default function mask(anyType: unknown, masks: string[]): unknown {
         ? `[MASKED array]`
         : currType.map((el, idx) => _mask(el, _masks, `${dotPath}/${idx}`));
     } else if (currType instanceof Object) {
-      return shouldMask
-        ? `[MASKED object]`
-        : Object.entries(currType).reduce(
-            (acc: Record<string, unknown>, entry) => {
-              const [key, val] = entry;
-              acc[key] = _mask(val, _masks, `${dotPath}/${key}`);
-              return acc;
-            },
-            {}
-          );
+      return shouldMask ? `[MASKED object]` : Object.entries(currType).reduce(
+        (acc: Record<string, unknown>, entry) => {
+          const [key, val] = entry;
+          acc[key] = _mask(val, _masks, `${dotPath}/${key}`);
+          return acc;
+        },
+        {},
+      );
     } else {
       return shouldMask ? `[MASKED ${typeof currType}]` : currType;
     }
@@ -45,9 +43,11 @@ function validateMasks(masks: string[]) {
   const violations: string[] = masks.filter((m: string) => m[0] !== "/");
   if (violations.length) {
     throw new Error(
-      `Masks should begin from root '/'. Violations:\n  ${violations.join(
-        "\n  "
-      )}`
+      `Masks should begin from root '/'. Violations:\n  ${
+        violations.join(
+          "\n  ",
+        )
+      }`,
     );
   }
 }

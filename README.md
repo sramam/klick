@@ -5,8 +5,10 @@
 Features:
 
 - Two update modes:
-  1. `update` fine grained update (only filtered tests, even within a single suite)
-  2. `refresh` coarse grained update (removes un-exercised snapshots within suites)
+  1. `update` fine grained update (only filtered tests, even within a single
+     suite)
+  2. `refresh` coarse grained update (removes un-exercised snapshots within
+     suites)
 - Simple ability to `mask` variant fields, accessed via json-ptr
 - CI aware - does not update snapshots on CI server
 - Snapshot files are valid JSON5
@@ -19,8 +21,8 @@ In practice, we'll need to use this:
 - `--allow-write`: to create/update snapshots
 - `--unstable`: for `fs` capability from deno std-lib
 
-Current deno implementation does not allow for wild-cards and globs in the permissions `allow-list`.
-Ideally, this is the set of permissions `klick` needs:
+Current deno implementation does not allow for wild-cards and globs in the
+permissions `allow-list`. Ideally, this is the set of permissions `klick` needs:
 
 - `--allow-read="./**/*.assertSnapshot"`: to read snapshots
 - `--allow-write="./**/*.assertSnapshot"`: to create/update snapshots
@@ -63,7 +65,7 @@ test(`Test with masks`, ({ assertSnapshot}) => {
 Masked snapshot:
 
 ```
-  'Test with masks': {
+'Test with masks': {
     a: 'a',
     b: 1,
     c: {
@@ -88,7 +90,8 @@ deno test --allow-write="./*.snap" --allow-read="./*.snap" --unstable
 
 #### Filtered snapshot update
 
-Only updates snapshots for tests being executed. Honors `ignore` and `only` attributes from `Deno.TestDefinition`
+Only updates snapshots for tests being executed. Honors `ignore` and `only`
+attributes from `Deno.TestDefinition`
 
 ```
 deno test --allow-write --allow-read= --unstable --filter "/.*another.*/" -- --update
@@ -102,7 +105,8 @@ deno test --allow-write --allow-read= --unstable --filter "/.*another.*/" -- --u
 
 #### Refresh snapshots
 
-Update all snapshots, deleting any un-executed snapshots. Only does so if a test-suite is executed
+Update all snapshots, deleting any un-executed snapshots. Only does so if a
+test-suite is executed
 
 ```
 deno test --allow-write="./*.snap" --allow-read="./*.snap" --unstable --refresh

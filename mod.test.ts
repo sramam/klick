@@ -51,19 +51,18 @@ test(`test with masks`, ({ assertSnapshot }) => {
   assertSnapshot(ot, masks);
 });
 
-
-test(`Test with masks - example`, ({ assertSnapshot}) => {
+test(`Test with masks - example`, ({ assertSnapshot }) => {
   const actual = {
-    a: 'a',
+    a: "a",
     b: 1,
     c: {
       start: Date.now(),
-      randomArray:  [
+      randomArray: [
         Math.random(),
         Math.random(),
-      ]
-    }
-  }
-  const masks = ['/c/start', '/c/randomArray/*']
+      ],
+    },
+  };
+  const masks = ["/c/start", "/c/randomArray/*"];
   assertSnapshot(actual, masks);
-})
+});
