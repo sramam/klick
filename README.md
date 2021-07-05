@@ -85,7 +85,7 @@ Masked snapshot:
 Validate existing snapshots or create new snapshots
 
 ```
-deno test --allow-write="./*.snap" --allow-read="./*.snap" --unstable
+deno test --allow-write --allow-read --unstable
 ```
 
 #### Filtered snapshot update
@@ -94,13 +94,13 @@ Only updates snapshots for tests being executed. Honors `ignore` and `only`
 attributes from `Deno.TestDefinition`
 
 ```
-deno test --allow-write --allow-read= --unstable --filter "/.*another.*/" -- --update
+deno test --allow-write --allow-read --unstable --filter "/.*another.*/" -- --update
 ```
 
 or
 
 ```
-deno test --allow-write --allow-read= --unstable --filter "/.*another.*/" -- --u
+deno test --allow-write --allow-read --unstable --filter "/.*another.*/" -- --u
 ```
 
 #### Refresh snapshots
@@ -109,11 +109,11 @@ Update all snapshots, deleting any un-executed snapshots. Only does so if a
 test-suite is executed
 
 ```
-deno test --allow-write="./*.snap" --allow-read="./*.snap" --unstable --refresh
+deno test --allow-write --allow-read --unstable -- --refresh
 ```
 
 or
 
 ```
-deno test --allow-write="./*.snap" --allow-read="./*.snap" --unstable --r
+deno test --allow-write --allow-read --unstable -- --r
 ```
