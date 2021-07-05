@@ -26,7 +26,7 @@ jobs:
         run: deno test --coverage=./coverage --allow-all --unstable
 
       - name: Run tests
-        run: deno test --coverage=./coverage --allow-all --unstable --update
+        run: deno test --coverage=./coverage --allow-all --unstable -- --update
 
       - name: Run tests
-        run: deno test --coverage=./coverage --allow-all --unstable --refresh
+        run: deno test --coverage=./coverage --allow-all --unstable -- --refresh
