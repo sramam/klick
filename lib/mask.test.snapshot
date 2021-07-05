@@ -1,0 +1,37 @@
+{
+  'mask with matches': {
+    blah: [
+      {
+        blue: '[MASKED number]',
+        a: 1,
+      },
+      {
+        blue: '[MASKED number]',
+        a: 2,
+      },
+    ],
+    a: {
+      s: {
+        d: {
+          f: '[MASKED boolean]',
+          g: true,
+        },
+        d1: 'd1',
+      },
+      s1: 's1',
+    },
+    a1: 'a1',
+    b: [
+      {
+        c: '[MASKED number]',
+        d: 1,
+      },
+      {
+        c: 2,
+        d: 2,
+      },
+    ],
+  },
+  'mask validation error': "Masks should begin from root '/'. Violations:\n  blah/*/blue\n  a/s/d/f\n  b/0/c",
+  'mask no match error': 'None of the masks matched. This is likely an error',
+}

@@ -1,0 +1,14 @@
+scripts:
+  test:
+    - deno test -A --unstable --coverage=coverage/deno
+    - deno test -A --unstable --coverage=coverage/deno -- --update
+    - deno test -A --unstable --coverage=coverage/deno -- --refresh
+    - d8 convert coverage/deno coverage/tmp
+    - npx c8 report -r html -r text-summary --check-coverage --per-file
+  coverage:
+    - d8 convert coverage/deno coverage/tmp
+    - npx c8 report -r html --check-coverage --per-file
+  cli: deno run --unstable --allow-read --allow-write cli.ts
+  publish:
+    - deno run --allow-read --allow-write --unstable pre-publish.ts
+    - eggs publish

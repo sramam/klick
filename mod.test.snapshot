@@ -1,0 +1,66 @@
+{
+  'assertSnapshot Test': {
+    a: 1,
+    b: 'b',
+  },
+  'assertSnapshot Test:#2': {
+    c: 2,
+    d: 'd',
+  },
+  'a second test': [
+    1,
+    2,
+    3,
+  ],
+  'a second test:#2': 'some string',
+  'a second test:#3': 2,
+  'a second test:#4': true,
+  'skip test on update': {
+    a: 1,
+    u: false,
+  },
+  'test with masks': {
+    blah: [
+      {
+        blue: '[MASKED number]',
+        a: 1,
+      },
+      {
+        blue: '[MASKED number]',
+        a: 2,
+      },
+    ],
+    a: {
+      s: {
+        d: {
+          f: '[MASKED boolean]',
+          g: true,
+        },
+        d1: 'd1',
+      },
+      s1: 's1',
+    },
+    a1: 'a1',
+    b: [
+      {
+        c: '[MASKED number]',
+        d: 1,
+      },
+      {
+        c: 2,
+        d: 2,
+      },
+    ],
+  },
+  'Test with masks - example': {
+    a: 'a',
+    b: 1,
+    c: {
+      start: '[MASKED number]',
+      randomArray: [
+        '[MASKED number]',
+        '[MASKED number]',
+      ],
+    },
+  },
+}
