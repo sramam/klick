@@ -148,7 +148,7 @@ function compose(
     return _test(testDefinition as Deno.TestDefinition);
   };
 }
-const test = compose();
+export const test = compose();
 export default test;
 
 function getSourceMap(depth = 3) {

@@ -33,7 +33,7 @@ permissions `allow-list`. Ideally, this is the set of permissions `klick` needs:
 ### Writing tests
 
 ```
-import test from "https://x.nest.land/klick@0.1.0/mod.ts
+import test from "https://deno.land/x/klick@0.1.2/mod.ts
 
 test(`Simple test`, ({ assertSnapshot}) => {
   const actual = {
