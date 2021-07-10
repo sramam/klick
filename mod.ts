@@ -190,6 +190,9 @@ export function compareSnapshots(
   sourceMap: string,
 ) {
   try {
+    // stringify+parse to ensure that "undefined" fields are removed.
+    // `expected` has been through this process
+    actual = JSON5.parse(JSON5.stringify(actual));
     assertEquals(actual, expected);
   } catch (err) {
     const message = `Snapshot mismatch:\n  ${title}\n  ${sourceMap}\n  ${
